@@ -1,0 +1,333 @@
+{
+  "device": "Orin",
+  "compute_capability": [
+    8,
+    7
+  ],
+  "torch": "2.12.1+cu132",
+  "cuda": "13.2",
+  "cudnn": 92000,
+  "tensorrt": "10.16.2.10",
+  "runs": {
+    "320x200": {
+      "TensorRT": {
+        "device_resident": {
+          "median_ms": 4.016319990158081,
+          "p95_ms": 4.028846335411072,
+          "mean_ms": 4.015970637400945,
+          "n": 72
+        },
+        "with_transfers": {
+          "median_ms": 4.132080997806042,
+          "p95_ms": 4.294240853778319,
+          "mean_ms": 4.146877055467889,
+          "n": 72
+        },
+        "reference": [
+          {
+            "sample": 0,
+            "finite": true,
+            "mae": 6.87720748828724e-05
+          },
+          {
+            "sample": 1,
+            "finite": true,
+            "mae": 0.0032741946633905172
+          }
+        ]
+      },
+      "PyTorch BF16": {
+        "device_resident": {
+          "median_ms": 33.2067985534668,
+          "p95_ms": 33.861341285705564,
+          "mean_ms": 33.25576490826077,
+          "n": 72
+        },
+        "with_transfers": {
+          "median_ms": 33.223960497707594,
+          "p95_ms": 33.49592559497978,
+          "mean_ms": 33.2293678885536,
+          "n": 72
+        },
+        "reference": [
+          {
+            "sample": 0,
+            "finite": true,
+            "mae": 7.938780618133023e-05
+          },
+          {
+            "sample": 1,
+            "finite": true,
+            "mae": 0.001595523557625711
+          }
+        ]
+      },
+      "PyTorch FP16": {
+        "device_resident": {
+          "median_ms": 33.15296173095703,
+          "p95_ms": 33.49972343444824,
+          "mean_ms": 33.1813555293613,
+          "n": 72
+        },
+        "with_transfers": {
+          "median_ms": 33.24258500288124,
+          "p95_ms": 33.592048197897384,
+          "mean_ms": 33.26218693038956,
+          "n": 72
+        },
+        "reference": [
+          {
+            "sample": 0,
+            "finite": true,
+            "mae": 7.762467248539906e-06
+          },
+          {
+            "sample": 1,
+            "finite": true,
+            "mae": 0.0013100667856633663
+          }
+        ]
+      }
+    },
+    "640x400": {
+      "TensorRT": {
+        "device_resident": {
+          "median_ms": 10.539008140563965,
+          "p95_ms": 10.57810082435608,
+          "mean_ms": 10.533692863252428,
+          "n": 72
+        },
+        "with_transfers": {
+          "median_ms": 10.843071999261156,
+          "p95_ms": 10.980998349623405,
+          "mean_ms": 10.855618750509974,
+          "n": 72
+        },
+        "reference": [
+          {
+            "sample": 0,
+            "finite": true,
+            "mae": 0.00013961967488285154
+          },
+          {
+            "sample": 1,
+            "finite": true,
+            "mae": 0.0014775716699659824
+          }
+        ]
+      },
+      "PyTorch BF16": {
+        "device_resident": {
+          "median_ms": 36.809791564941406,
+          "p95_ms": 37.0541389465332,
+          "mean_ms": 36.793339040544296,
+          "n": 72
+        },
+        "with_transfers": {
+          "median_ms": 36.88016299929586,
+          "p95_ms": 37.30044204858132,
+          "mean_ms": 36.88596384704902,
+          "n": 72
+        },
+        "reference": [
+          {
+            "sample": 0,
+            "finite": true,
+            "mae": 6.624818342970684e-05
+          },
+          {
+            "sample": 1,
+            "finite": true,
+            "mae": 0.003713442711159587
+          }
+        ]
+      },
+      "PyTorch FP16": {
+        "device_resident": {
+          "median_ms": 37.17846488952637,
+          "p95_ms": 37.47164344787598,
+          "mean_ms": 37.204227129618324,
+          "n": 72
+        },
+        "with_transfers": {
+          "median_ms": 37.21096749723074,
+          "p95_ms": 37.55376505177992,
+          "mean_ms": 37.207066763484264,
+          "n": 72
+        },
+        "reference": [
+          {
+            "sample": 0,
+            "finite": true,
+            "mae": 1.0696256140363403e-05
+          },
+          {
+            "sample": 1,
+            "finite": true,
+            "mae": 0.0005819852231070399
+          }
+        ]
+      }
+    },
+    "864x544": {
+      "TensorRT": {
+        "device_resident": {
+          "median_ms": 18.62460708618164,
+          "p95_ms": 18.649489212036134,
+          "mean_ms": 18.620590951707626,
+          "n": 72
+        },
+        "with_transfers": {
+          "median_ms": 19.156241502059856,
+          "p95_ms": 19.180617997335503,
+          "mean_ms": 19.123117388618184,
+          "n": 72
+        },
+        "reference": [
+          {
+            "sample": 0,
+            "finite": true,
+            "mae": 4.5060620323056355e-05
+          },
+          {
+            "sample": 1,
+            "finite": true,
+            "mae": 0.006378495134413242
+          }
+        ]
+      },
+      "PyTorch BF16": {
+        "device_resident": {
+          "median_ms": 41.43329620361328,
+          "p95_ms": 41.729556465148924,
+          "mean_ms": 41.454463216993545,
+          "n": 72
+        },
+        "with_transfers": {
+          "median_ms": 41.49696899912669,
+          "p95_ms": 41.93418414834014,
+          "mean_ms": 41.513590263396814,
+          "n": 72
+        },
+        "reference": [
+          {
+            "sample": 0,
+            "finite": true,
+            "mae": 9.363101708004251e-05
+          },
+          {
+            "sample": 1,
+            "finite": true,
+            "mae": 0.0011196982813999057
+          }
+        ]
+      },
+      "PyTorch FP16": {
+        "device_resident": {
+          "median_ms": 41.6068000793457,
+          "p95_ms": 41.86116390228271,
+          "mean_ms": 41.6162355211046,
+          "n": 72
+        },
+        "with_transfers": {
+          "median_ms": 41.68242700325209,
+          "p95_ms": 42.02727899719321,
+          "mean_ms": 41.682097138416594,
+          "n": 72
+        },
+        "reference": [
+          {
+            "sample": 0,
+            "finite": true,
+            "mae": 1.3949717867944855e-05
+          },
+          {
+            "sample": 1,
+            "finite": true,
+            "mae": 8.227668149629608e-05
+          }
+        ]
+      }
+    },
+    "1280x800": {
+      "TensorRT": {
+        "device_resident": {
+          "median_ms": 48.914512634277344,
+          "p95_ms": 49.130544090270995,
+          "mean_ms": 48.90495655271742,
+          "n": 72
+        },
+        "with_transfers": {
+          "median_ms": 49.65581700162147,
+          "p95_ms": 49.778864399922895,
+          "mean_ms": 49.655348055744575,
+          "n": 72
+        },
+        "reference": [
+          {
+            "sample": 0,
+            "finite": true,
+            "mae": 3.227476554457098e-05
+          },
+          {
+            "sample": 1,
+            "finite": true,
+            "mae": 0.0031687826849520206
+          }
+        ]
+      },
+      "PyTorch BF16": {
+        "device_resident": {
+          "median_ms": 76.24435424804688,
+          "p95_ms": 76.39477844238282,
+          "mean_ms": 76.2581991619534,
+          "n": 72
+        },
+        "with_transfers": {
+          "median_ms": 76.99397750184289,
+          "p95_ms": 78.23959369961813,
+          "mean_ms": 77.11728879166913,
+          "n": 72
+        },
+        "reference": [
+          {
+            "sample": 0,
+            "finite": true,
+            "mae": 0.0001510392758063972
+          },
+          {
+            "sample": 1,
+            "finite": true,
+            "mae": 0.011354214511811733
+          }
+        ]
+      },
+      "PyTorch FP16": {
+        "device_resident": {
+          "median_ms": 74.79652786254883,
+          "p95_ms": 74.99479026794434,
+          "mean_ms": 74.81704817877875,
+          "n": 72
+        },
+        "with_transfers": {
+          "median_ms": 75.58773650089279,
+          "p95_ms": 76.69562030023371,
+          "mean_ms": 75.71048418069242,
+          "n": 72
+        },
+        "reference": [
+          {
+            "sample": 0,
+            "finite": true,
+            "mae": 2.3573818907607347e-05
+          },
+          {
+            "sample": 1,
+            "finite": true,
+            "mae": 9.747662988957018e-05
+          }
+        ]
+      }
+    }
+  }
+}

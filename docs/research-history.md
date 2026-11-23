@@ -1,0 +1,19 @@
+# Public research history
+
+## January 2023 · The display bottleneck on Orin
+
+`manbehindthemadness` reported a Python OpenCV display problem in an AGX Orin pipeline using a Luxonis OAK-D Pro and a 4K LED wall. The report identified the latency of downloading frames for CPU-side display processing and asked how to pass GPU memory between PyTorch and OpenCV. `cudawarped` pointed to the HighGUI CUDA `GpuMat` issue and described an OpenGL texture workaround for C++. The forum exchange records the application problem and the available paths at that time. [OpenCV forum discussion](https://forum.opencv.org/t/python-opencv-cuda-opengl-imshow-18553-18588/11581) · [HighGUI issue #22328](https://github.com/opencv/opencv/issues/22328)
+
+## February 2023 · Getting video matting to run under TensorRT
+
+The Robust Video Matting work tested compiling a video model for the Orin. `manbehindthemadness` posted the conversion reproducer and TensorRT logs, and NVIDIA support investigated the parser behavior. The thread records successful test inference using the generated plan even though `trtexec` still faulted in the reporter's run. CUDA–OpenGL registration and surface writes were already documented in CUDA 11.4. These records cover TensorRT troubleshooting and the graphics interop APIs available at the time. [Robust Video Matting issue #219](https://github.com/PeterL1n/RobustVideoMatting/issues/219) · [NVIDIA developer thread](https://forums.developer.nvidia.com/t/orin-trtexec-results-in-segmentation-fault/242724) · [CUDA 11.4 OpenGL interoperability](https://docs.nvidia.com/cuda/archive/11.4.0/cuda-c-programming-guide/index.html#opengl-interoperability)
+
+## March–May 2023 · OpenCV exposes external CUDA memory in Python
+
+`cudawarped` opened and authored OpenCV PR #23371, and `manbehindthemadness` commented on its cross-library use. Merged on May 22, the PR added Python bindings to construct a `GpuMat` over an external CUDA allocation and wrap an existing CUDA stream. The PR also credits related requests from the cuCIM and OpenCV Python communities. The allocation owner still controls the buffer's lifetime. Graphics presentation uses a separate backend and interop path. [Merged OpenCV PR #23371](https://github.com/opencv/opencv/pull/23371) · [Project author's comment](https://github.com/opencv/opencv/pull/23371#issuecomment-1474837991) · [OpenCV API reference](https://docs.opencv.org/4.13.0/d9/d41/group__cudacore__struct.html)
+
+## November 2026 · Depth Pro 2-S on OAK and Jetson
+
+- **OAK and Myriad X.** The Luxonis port compiled Apple Depth Pro 2-S for Myriad X. The published U8 variants accept planar RGB directly from an OAK `ColorCamera` preview, so the camera-to-inference path stays on the OAK. This is on-device DepthAI routing across a different hardware boundary from Jetson memory sharing. [OAK builds and live-camera example](https://github.com/manbehindthemadness/Apple-DepthPro2-Intel-Myriad-and-OAK#connect-a-camera)
+- **Jetson and TensorRT.** The follow-up moved inference to AGX Orin and published four fixed-size TensorRT engines. The inference benchmark timed both GPU-resident tensors and runs with pinned host transfers. That separation made it possible to measure the model engine independently from USB capture and desktop display. [Jetson TensorRT release and benchmark](https://github.com/manbehindthemadness/Depth-Pro-2-S-on-Nvidia-AGX-Orin-TensorRT-JetPack-7.2.1/tree/v1.0.1#tensorrt-versus-pytorch-cuda)
+- **Jetson display experiment.** A follow-up kept the TensorRT output in CUDA through depth scaling, colormapping, and OpenGL presentation. The three-way benchmark compared CPU readback, a GPU-only texture copy, and direct CUDA surface writes. Holding the engine and renderer fixed isolated the improvement from changing the display pipeline. [Experiment, code, and benchmark data](../benchmarks/depth-pro-2/README.md)
